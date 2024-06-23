@@ -54,21 +54,21 @@ class RentRequest (models.Model):
     
 
 class RentPost(models.Model):
-    user = models.ForeignKey(User , on_delete=models.CASCADE)
-    category = models.ForeignKey(Category , on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     description = models.TextField()
-    rent_request = models.ForeignKey(RentRequest , on_delete=models.CASCADE)
-    address = models.ForeignKey(Address , on_delete=models.CASCADE)
+    rent_request = models.ManyToManyField(RentRequest)
+    address = models.ForeignKey(Address, on_delete=models.CASCADE)
     post_image = models.ImageField(upload_to='post_images/')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     whatsapp_number = models.CharField(max_length=15)
     phone_number = models.CharField(max_length=15)
     term_and_condition = models.TextField()
-    
+
     def __str__(self):
-        return self.title +" | "+ self.user.username
+        return self.title + " | " + self.user.username
     
 class RentOrder(models.Model):
     user = models.ForeignKey(User , on_delete=models.CASCADE)
