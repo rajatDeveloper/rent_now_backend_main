@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from rent_now.models import Address , User  , Category , RentRequest , RentPost , User 
+from rent_now.models import Address , User  , Category , RentRequest , RentPost , User  , RentOrder
 
 #will have all serlizers for the api here 
 
@@ -42,5 +42,23 @@ class RentPostCreateSerializer(serializers.ModelSerializer):
  
     class Meta:
         model = RentPost
-        fields = '__all__'                             
+        fields = '__all__'            
+        
+
+class RentOrderCreateSerializer(serializers.ModelSerializer):
+   
+    class Meta:
+        model = RentOrder
+        fields = '__all__'    
+        
+
+class RentOrderSerializer(serializers.ModelSerializer):
+    user = UserSerializer()
+    rent_post = RentPostSerializer()
+    rent_request = RentRequestSerializer()
+    user_address = AddressSerializer()
+    
+    class Meta:
+        model = RentOrder
+        fields = '__all__'                                     
         

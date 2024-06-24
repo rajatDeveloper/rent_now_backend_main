@@ -8,4 +8,5 @@ admin.site.register(RentPost , list_display=['id','title','category','user','add
 
 admin.site.register(RentRequest , list_display=['id','rent_type','pay_per_duration'])
 
-admin.site.register(RentOrder , list_display=['id','user','rent_post','status','created_at'])
+admin.site.register(RentOrder , list_display=['id','user','rent_post','status','created_at',])
+
