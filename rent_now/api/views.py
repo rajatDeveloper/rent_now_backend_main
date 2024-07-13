@@ -70,6 +70,19 @@ class RentPostListView(generics.ListAPIView):
         user = get_object_or_404(User, id=user_id)
         return RentPost.objects.filter(user=user)
     
+class RentPostLisAlltView(generics.ListAPIView):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+    
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ["category", "address__pin_code"]
+    # permission_classes = [IsAuthenticated]
+    
+    serializer_class = RentPostSerializer
+
+    def get_queryset(self):    
+        return RentPost.objects.all()   
+    
 # get rent post model of user 
 class RentPostCreateView(generics.CreateAPIView):
     

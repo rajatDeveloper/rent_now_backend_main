@@ -1,5 +1,5 @@
 from django.urls import path , include 
-from .views import AddressListUpdateView , CategoryListCreateView , RentRequestListCreateView , RentPostListView , RentPostCreateView , RentPostGetSingleView , RentOrderCreateView , RentOrderGetUpdateSingleView , RentOrderListView , RentOrderListOwnerUserView
+from .views import AddressListUpdateView , CategoryListCreateView , RentRequestListCreateView , RentPostListView , RentPostCreateView , RentPostGetSingleView , RentOrderCreateView , RentOrderGetUpdateSingleView , RentOrderListView , RentOrderListOwnerUserView , RentPostLisAlltView
 
 
 urlpatterns = [
@@ -51,6 +51,11 @@ urlpatterns = [
         "users/<int:user_id>/rent-order/owner-user/",
         RentOrderListOwnerUserView.as_view(),
         name="rent-order-list-owner-user-view",    
+    ),
+    path(
+        "rent-posts/",
+        RentPostLisAlltView.as_view(),
+        name="rent-post-get-all",    
     ),
 
     
