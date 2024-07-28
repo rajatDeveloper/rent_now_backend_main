@@ -87,8 +87,8 @@ class RentPostLisAlltView(generics.ListAPIView):
 class RentPostCreateView(generics.CreateAPIView):
     
     # permission_classes = [IsAuthenticated]
-    # authentication_classes = [TokenAuthentication]
-    # permission_classes = [IsAuthenticated]
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
     
     serializer_class = RentPostCreateSerializer
 
